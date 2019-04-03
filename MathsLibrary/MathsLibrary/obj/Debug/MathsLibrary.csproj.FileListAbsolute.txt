@@ -1,7 +1,0 @@
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\bin\Debug\MathsLibrary.dll.config
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\bin\Debug\MathsLibrary.dll
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\bin\Debug\MathsLibrary.pdb
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\obj\Debug\MathsLibrary.csprojAssemblyReference.cache
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\obj\Debug\MathsLibrary.csproj.CoreCompileInputs.cache
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\obj\Debug\MathsLibrary.dll
-C:\Users\王微\source\repos\MathsLibrary\MathsLibrary\obj\Debug\MathsLibrary.pdb

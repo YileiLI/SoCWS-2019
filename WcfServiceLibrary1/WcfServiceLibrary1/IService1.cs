@@ -11,11 +11,17 @@ namespace WcfServiceLibrary1
     [ServiceContract]
     public interface IService1
     {
+        
         [OperationContract]
         string GetData(string value);
+        
 
+        
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
+        
+
+        
 
         // TODO: 在此添加您的服务操作
     }
