@@ -22,7 +22,7 @@ namespace VelibWeb
         {
         }
 
-        public List<RootObject> getAllStationsByCity(string nameOfCity)
+        public string getAllStationsByCity(string nameOfCity)
         {
             request = WebRequest.Create(
                 "https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
@@ -35,36 +35,10 @@ namespace VelibWeb
             reader = new StreamReader(dataStream);
             // Read the content.
             responseFromServer = reader.ReadToEnd();
-
-
-
-
-
-            return null;
+            return responseFromServer;
 
         }
 
     }
 
-    public class Position
-    {
-        public string lat { get; set; }
-        public string lng { get; set; }
-    }
-
-    public class RootObject
-    {
-        public string number { get; set; }
-        public string contract_name { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public Position position { get; set; }
-        public string banking { get; set; }
-        public string bonus { get; set; }
-        public string bike_stands { get; set; }
-        public string available_bike_stands { get; set; }
-        public string available_bikes { get; set; }
-        public string status { get; set; }
-        public string last_update { get; set; }
-    }
 }

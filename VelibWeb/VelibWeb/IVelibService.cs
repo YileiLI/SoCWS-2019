@@ -15,6 +15,6 @@ namespace VelibWeb
         void DoWork();
 
         [OperationContract]
-        List<RootObject> getAllStationsByCity(string nameOfCity);
+        string getAllStationsByCity(string nameOfCity);
     }
 }
