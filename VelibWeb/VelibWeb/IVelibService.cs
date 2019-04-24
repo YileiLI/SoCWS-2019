@@ -12,9 +12,10 @@ namespace VelibWeb
     public interface IVelibService
     {
         [OperationContract]
-        void DoWork();
+        string GetAllStationsByCity(string nameOfCity);
 
         [OperationContract]
-        string getAllStationsByCity(string nameOfCity);
+        string GetInfomationsOfStationByName(string nameOfCity,string nameOfStation);
     }
 }
+

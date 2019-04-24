@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,14 +19,11 @@ namespace VelibWeb
         StreamReader reader;
         string responseFromServer;
 
-        public void DoWork()
+        public string GetAllStationsByCity(string nameOfCity)
         {
-        }
-
-        public string getAllStationsByCity(string nameOfCity)
-        {
+            string res= "";
             request = WebRequest.Create(
-                "https://api.jcdecaux.com/vls/v1/stations?contract=Toulouse&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
+                "https://api.jcdecaux.com/vls/v1/stations?contract="+nameOfCity+"&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
             response = request.GetResponse();
             // Display the status.
             Console.WriteLine(((HttpWebResponse)response).StatusDescription);
@@ -35,10 +33,53 @@ namespace VelibWeb
             reader = new StreamReader(dataStream);
             // Read the content.
             responseFromServer = reader.ReadToEnd();
-            return responseFromServer;
-
+            List<RootObject> rb = JsonConvert.DeserializeObject<List<RootObject>>(responseFromServer);
+            foreach (RootObject ob in rb)
+            {
+                res = res + ob.name + "\n";
+            }
+            return res;
         }
 
+        public string GetInfomationsOfStationByName(string nameOfCity,string nameOfStation)
+        {
+            string res = "";
+            request = WebRequest.Create(
+                "https://api.jcdecaux.com/vls/v1/stations/" + nameOfStation+"?contract="+ nameOfCity + "&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
+            response = request.GetResponse();
+            // Display the status.
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            // Get the stream containing content returned by the server.
+            dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            reader = new StreamReader(dataStream);
+            // Read the content.
+            responseFromServer = reader.ReadToEnd();
+
+            return null;
+        }
+    }
+
+    public class Position
+    {
+        public string lat { get; set; }
+        public string lng { get; set; }
+    }
+
+    public class RootObject
+    {
+        public string number { get; set; }
+        public string contract_name { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public Position position { get; set; }
+        public string banking { get; set; }
+        public string bonus { get; set; }
+        public string bike_stands { get; set; }
+        public string available_bike_stands { get; set; }
+        public string available_bikes { get; set; }
+        public string status { get; set; }
+        public string last_update { get; set; }
     }
 
 }

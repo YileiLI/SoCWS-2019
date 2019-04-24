@@ -15,17 +15,11 @@ namespace VelibClient.VelibServer {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="VelibServer.IVelibService")]
     public interface IVelibService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/DoWork", ReplyAction="http://tempuri.org/IVelibService/DoWorkResponse")]
-        void DoWork();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetAllStationsByCity", ReplyAction="http://tempuri.org/IVelibService/GetAllStationsByCityResponse")]
+        string GetAllStationsByCity(string nameOfCity);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/DoWork", ReplyAction="http://tempuri.org/IVelibService/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/getAllStationsByCity", ReplyAction="http://tempuri.org/IVelibService/getAllStationsByCityResponse")]
-        string getAllStationsByCity(string nameOfCity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/getAllStationsByCity", ReplyAction="http://tempuri.org/IVelibService/getAllStationsByCityResponse")]
-        System.Threading.Tasks.Task<string> getAllStationsByCityAsync(string nameOfCity);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetAllStationsByCity", ReplyAction="http://tempuri.org/IVelibService/GetAllStationsByCityResponse")]
+        System.Threading.Tasks.Task<string> GetAllStationsByCityAsync(string nameOfCity);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,20 +49,12 @@ namespace VelibClient.VelibServer {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public string GetAllStationsByCity(string nameOfCity) {
+            return base.Channel.GetAllStationsByCity(nameOfCity);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
-        }
-        
-        public string getAllStationsByCity(string nameOfCity) {
-            return base.Channel.getAllStationsByCity(nameOfCity);
-        }
-        
-        public System.Threading.Tasks.Task<string> getAllStationsByCityAsync(string nameOfCity) {
-            return base.Channel.getAllStationsByCityAsync(nameOfCity);
+        public System.Threading.Tasks.Task<string> GetAllStationsByCityAsync(string nameOfCity) {
+            return base.Channel.GetAllStationsByCityAsync(nameOfCity);
         }
     }
 }

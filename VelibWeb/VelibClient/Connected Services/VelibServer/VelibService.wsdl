@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VelibService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="WSHttpBinding_IVelibService_policy">
+  <wsp:Policy wsu:Id="velib_IVelibService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -96,7 +96,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IVelibService_DoWork_Input_policy">
+  <wsp:Policy wsu:Id="velib_IVelibService_GetAllStationsByCity_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -115,45 +115,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IVelibService_DoWork_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IVelibService_getAllStationsByCity_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IVelibService_getAllStationsByCity_output_policy">
+  <wsp:Policy wsu:Id="velib_IVelibService_GetAllStationsByCity_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -178,56 +140,35 @@
       <xsd:import schemaLocation="http://localhost:8733/VelibWeb/VelibService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IVelibService_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
+  <wsdl:message name="IVelibService_GetAllStationsByCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStationsByCity" />
   </wsdl:message>
-  <wsdl:message name="IVelibService_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
-  </wsdl:message>
-  <wsdl:message name="IVelibService_getAllStationsByCity_InputMessage">
-    <wsdl:part name="parameters" element="tns:getAllStationsByCity" />
-  </wsdl:message>
-  <wsdl:message name="IVelibService_getAllStationsByCity_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getAllStationsByCityResponse" />
+  <wsdl:message name="IVelibService_GetAllStationsByCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStationsByCityResponse" />
   </wsdl:message>
   <wsdl:portType name="IVelibService">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IVelibService/DoWork" message="tns:IVelibService_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IVelibService/DoWorkResponse" message="tns:IVelibService_DoWork_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getAllStationsByCity">
-      <wsdl:input wsaw:Action="http://tempuri.org/IVelibService/getAllStationsByCity" message="tns:IVelibService_getAllStationsByCity_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IVelibService/getAllStationsByCityResponse" message="tns:IVelibService_getAllStationsByCity_OutputMessage" />
+    <wsdl:operation name="GetAllStationsByCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVelibService/GetAllStationsByCity" message="tns:IVelibService_GetAllStationsByCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVelibService/GetAllStationsByCityResponse" message="tns:IVelibService_GetAllStationsByCity_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="WSHttpBinding_IVelibService" type="tns:IVelibService">
-    <wsp:PolicyReference URI="#WSHttpBinding_IVelibService_policy" />
+  <wsdl:binding name="velib_IVelibService" type="tns:IVelibService">
+    <wsp:PolicyReference URI="#velib_IVelibService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap12:operation soapAction="http://tempuri.org/IVelibService/DoWork" style="document" />
+    <wsdl:operation name="GetAllStationsByCity">
+      <soap12:operation soapAction="http://tempuri.org/IVelibService/GetAllStationsByCity" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IVelibService_DoWork_Input_policy" />
+        <wsp:PolicyReference URI="#velib_IVelibService_GetAllStationsByCity_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IVelibService_DoWork_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllStationsByCity">
-      <soap12:operation soapAction="http://tempuri.org/IVelibService/getAllStationsByCity" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IVelibService_getAllStationsByCity_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IVelibService_getAllStationsByCity_output_policy" />
+        <wsp:PolicyReference URI="#velib_IVelibService_GetAllStationsByCity_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="VelibService">
-    <wsdl:port name="WSHttpBinding_IVelibService" binding="tns:WSHttpBinding_IVelibService">
+    <wsdl:port name="velib_IVelibService" binding="tns:velib_IVelibService">
       <soap12:address location="http://localhost:8733/VelibWeb/VelibService/" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/VelibWeb/VelibService/</wsa10:Address>
