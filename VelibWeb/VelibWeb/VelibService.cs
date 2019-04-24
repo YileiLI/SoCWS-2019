@@ -41,11 +41,11 @@ namespace VelibWeb
             return res;
         }
 
-        public string GetInfomationsOfStationByName(string nameOfCity,string nameOfStation)
+        public string GetInfomationsOfStationByName(string nameOfCity,string numOfStation)
         {
-            string res = "";
             request = WebRequest.Create(
-                "https://api.jcdecaux.com/vls/v1/stations/" + nameOfStation+"?contract="+ nameOfCity + "&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
+                "https://api.jcdecaux.com/vls/v1/stations/" + numOfStation + "?contract="+ nameOfCity + "&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
+            Console.WriteLine(nameOfCity + numOfStation);
             response = request.GetResponse();
             // Display the status.
             Console.WriteLine(((HttpWebResponse)response).StatusDescription);
@@ -55,8 +55,15 @@ namespace VelibWeb
             reader = new StreamReader(dataStream);
             // Read the content.
             responseFromServer = reader.ReadToEnd();
-
-            return null;
+            if (responseFromServer.Length > 50)
+            {
+                RootObject rb = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
+                return rb.ToString();
+            }
+            else
+            {
+                return "Not Found!";
+            }
         }
     }
 
@@ -80,6 +87,17 @@ namespace VelibWeb
         public string available_bikes { get; set; }
         public string status { get; set; }
         public string last_update { get; set; }
+
+        override
+        public string ToString()
+        {
+            return number + "\n" +
+                name + "\n" +
+                bike_stands + "\n" +
+                available_bike_stands + "\n" +
+                available_bikes + "\n" +
+                banking;
+        }
     }
 
 }

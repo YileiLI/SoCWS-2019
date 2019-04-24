@@ -22,16 +22,12 @@ namespace VelibClient
 
         }
 
-        //private void rechercher_Click(object sender, EventArgs e)
-        //{
-
-        // }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (ville.Text != null)
             {
-                Form1 f1 = new Form1(ville.Text);
+                ListStations f1 = new ListStations(ville.Text);
                 f1.Show();
                 this.Hide();
             }

@@ -15,7 +15,7 @@ namespace VelibWeb
         string GetAllStationsByCity(string nameOfCity);
 
         [OperationContract]
-        string GetInfomationsOfStationByName(string nameOfCity,string nameOfStation);
+        string GetInfomationsOfStationByName(string nameOfCity,string numOfStation);
     }
 }
 

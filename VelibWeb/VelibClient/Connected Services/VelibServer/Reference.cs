@@ -20,6 +20,12 @@ namespace VelibClient.VelibServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetAllStationsByCity", ReplyAction="http://tempuri.org/IVelibService/GetAllStationsByCityResponse")]
         System.Threading.Tasks.Task<string> GetAllStationsByCityAsync(string nameOfCity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetInfomationsOfStationByName", ReplyAction="http://tempuri.org/IVelibService/GetInfomationsOfStationByNameResponse")]
+        string GetInfomationsOfStationByName(string nameOfCity, string numOfStation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetInfomationsOfStationByName", ReplyAction="http://tempuri.org/IVelibService/GetInfomationsOfStationByNameResponse")]
+        System.Threading.Tasks.Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity, string numOfStation);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace VelibClient.VelibServer {
         
         public System.Threading.Tasks.Task<string> GetAllStationsByCityAsync(string nameOfCity) {
             return base.Channel.GetAllStationsByCityAsync(nameOfCity);
+        }
+        
+        public string GetInfomationsOfStationByName(string nameOfCity, string numOfStation) {
+            return base.Channel.GetInfomationsOfStationByName(nameOfCity, numOfStation);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity, string numOfStation) {
+            return base.Channel.GetInfomationsOfStationByNameAsync(nameOfCity, numOfStation);
         }
     }
 }

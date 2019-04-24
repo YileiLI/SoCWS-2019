@@ -9,15 +9,17 @@ using System.Linq;
 
 namespace VelibClient
 {
-    public partial class Form1 : Form
+    public partial class ListStations : Form
     {
         private string _ville;
+        private string result;
         VelibServiceClient client = new VelibServiceClient();
-        public Form1(string ville)
+        public ListStations(string ville)
         {
             InitializeComponent();
             table.Visible = false;
             _ville = ville;
+            result = "";
         }
 
 
@@ -32,7 +34,6 @@ namespace VelibClient
             names = res.Split('\n').ToList();
             names.Sort();
             total.Text = names.Count.ToString();
-           // comboBox1.SelectedIndex = 0;
             for (int i = 0; i < names.Count; i++)
             {
                 list.Items.Add(names[i]);
@@ -51,39 +52,41 @@ namespace VelibClient
 
         private void list_Click(object sender, EventArgs e)
         {
+            string res = list.SelectedItem.ToString().Split('-')[0];
 
-                /*
-                if (root != null)
+
+            /*
+            if (root != null)
+            {
+                Console.WriteLine(root.available_bikes);
+                Console.WriteLine(root.bike_stands);
+                Console.WriteLine(root.available_bike_stands);
+                Console.WriteLine(root.banking);
+                // }
+                numOfStation.Text = root.number;
+                string[] res = root.name.Split(new Char[] { '-' });
+                numStation.Text = res[1];
+                bikeStands.Text = root.bike_stands;
+                available_bikes.Text = root.available_bikes;
+                available_stands.Text =  root.available_bike_stands;
+                if (root.banking == "true")
                 {
-                    Console.WriteLine(root.available_bikes);
-                    Console.WriteLine(root.bike_stands);
-                    Console.WriteLine(root.available_bike_stands);
-                    Console.WriteLine(root.banking);
-                    // }
-                    numOfStation.Text = root.number;
-                    string[] res = root.name.Split(new Char[] { '-' });
-                    numStation.Text = res[1];
-                    bikeStands.Text = root.bike_stands;
-                    available_bikes.Text = root.available_bikes;
-                    available_stands.Text =  root.available_bike_stands;
-                    if (root.banking == "true")
-                    {
-                        bank.Text = "Available";
-                    }
-                    else
-                    {
-                        bank.Text =  "Not available";
-
-                    }
+                    bank.Text = "Available";
                 }
                 else
                 {
-                    no_res.Text = "No available station!";
-                }
-                */
+                    bank.Text =  "Not available";
 
-                    //table.Visible = true;
-            
+                }
+            }
+            else
+            {
+                no_res.Text = "No available station!";
+            }
+            */
+
+            //table.Visible = true;
+
         }
 
 
@@ -161,7 +164,33 @@ namespace VelibClient
         private void list_SelectedIndexChanged(object sender, EventArgs e)
         {
             string text = list.GetItemText(list.SelectedItem);
-            string num = text.Split('-')[0];
+            string num = text.Split('-')[0].Replace(" ", "");
+            string tmp = client.GetInfomationsOfStationByName(_ville, num);
+            if(tmp!="Not Found!")
+            {
+                result = tmp;
+                List<string> res = new List<string>();
+                res = result.Split('\n').ToList();
+                numOfStation.Text = res[0];
+                bikeStands.Text = res[2];
+                available_bikes.Text = res[4];
+                available_stands.Text = res[3];
+                if(res[5] == "true")
+                {
+                    bank.Text = "Availble";
+                }
+                else
+                {
+                    bank.Text = "Not availble";
+                }
+                numStation.Text = res[1].Split('-')[1];
+                table.Visible = true;
+            }
+            else
+            {
+                Console.WriteLine("DoSomething!");
+            }
+
         }
     }
 
