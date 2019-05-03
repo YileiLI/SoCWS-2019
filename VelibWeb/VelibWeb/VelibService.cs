@@ -7,20 +7,37 @@ using System.Net;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Runtime.Caching;
 
 namespace VelibWeb
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的类名“VelibService”。
     public class VelibService : IVelibService
     {
+        ObjectCache cacheOfCity;
+        ObjectCache cacheOfStation;
+        CacheItemPolicy cacheItemPolicy;
         WebRequest request;
         WebResponse response;
         Stream dataStream;
         StreamReader reader;
         string responseFromServer;
 
+        public VelibService()
+        {
+            cacheOfCity = MemoryCache.Default;
+            cacheOfStation = MemoryCache.Default;
+            cacheItemPolicy = new CacheItemPolicy();
+            cacheItemPolicy.SlidingExpiration = new TimeSpan(0, 40, 0);
+        }
+
         public string GetAllStationsByCity(string nameOfCity)
         {
+            if (cacheOfCity[nameOfCity] != null)
+            {
+                return (string)cacheOfCity[nameOfCity];
+            }
+        
             string res= "";
             request = WebRequest.Create(
                 "https://api.jcdecaux.com/vls/v1/stations?contract="+nameOfCity+"&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
@@ -38,11 +55,16 @@ namespace VelibWeb
             {
                 res = res + ob.name + "\n";
             }
+            cacheOfCity.Set(nameOfCity, res, cacheItemPolicy);
             return res;
         }
 
         public string GetInfomationsOfStationByName(string nameOfCity,string numOfStation)
         {
+            if (cacheOfStation[numOfStation]!=null)
+            {
+                return (string)cacheOfStation[numOfStation];
+            }
             request = WebRequest.Create(
                 "https://api.jcdecaux.com/vls/v1/stations/" + numOfStation + "?contract="+ nameOfCity + "&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
             Console.WriteLine(nameOfCity + numOfStation);
@@ -58,6 +80,7 @@ namespace VelibWeb
             if (responseFromServer.Length > 50)
             {
                 RootObject rb = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
+                cacheOfStation.Set(numOfStation, rb.ToString(), cacheItemPolicy);
                 return rb.ToString();
             }
             else

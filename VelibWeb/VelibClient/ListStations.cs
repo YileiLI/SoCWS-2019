@@ -192,6 +192,13 @@ namespace VelibClient
             }
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Homepage home = new Homepage();
+            home.Show();
+            this.Hide();
+        }
     }
 
 
