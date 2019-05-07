@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Runtime.Caching;
+using System.Threading.Tasks;
 
 namespace VelibWeb
 {
@@ -31,6 +32,7 @@ namespace VelibWeb
             cacheItemPolicy.SlidingExpiration = new TimeSpan(0, 40, 0);
         }
 
+       
         public string GetAllStationsByCity(string nameOfCity)
         {
             if (cacheOfCity[nameOfCity] != null)
@@ -41,21 +43,28 @@ namespace VelibWeb
             string res= "";
             request = WebRequest.Create(
                 "https://api.jcdecaux.com/vls/v1/stations?contract="+nameOfCity+"&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
-            response = request.GetResponse();
-            // Display the status.
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            // Get the stream containing content returned by the server.
-            dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            reader = new StreamReader(dataStream);
-            // Read the content.
-            responseFromServer = reader.ReadToEnd();
-            List<RootObject> rb = JsonConvert.DeserializeObject<List<RootObject>>(responseFromServer);
-            foreach (RootObject ob in rb)
+            try
             {
-                res = res + ob.name + "\n";
+                response = request.GetResponse();
+                // Display the status.
+                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+                // Get the stream containing content returned by the server.
+                dataStream = response.GetResponseStream();
+                // Open the stream using a StreamReader for easy access.
+                reader = new StreamReader(dataStream);
+                // Read the content.
+                responseFromServer = reader.ReadToEnd();
+                List<RootObject> rb = JsonConvert.DeserializeObject<List<RootObject>>(responseFromServer);
+                foreach (RootObject ob in rb)
+                {
+                    res = res + ob.name + "\n";
+                }
+                cacheOfCity.Set(nameOfCity, res, cacheItemPolicy);
             }
-            cacheOfCity.Set(nameOfCity, res, cacheItemPolicy);
+            catch (WebException wex)
+            {
+                Console.WriteLine("Web Exception");
+            }
             return res;
         }
 
@@ -68,25 +77,34 @@ namespace VelibWeb
             request = WebRequest.Create(
                 "https://api.jcdecaux.com/vls/v1/stations/" + numOfStation + "?contract="+ nameOfCity + "&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
             Console.WriteLine(nameOfCity + numOfStation);
-            response = request.GetResponse();
-            // Display the status.
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            // Get the stream containing content returned by the server.
-            dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            reader = new StreamReader(dataStream);
-            // Read the content.
-            responseFromServer = reader.ReadToEnd();
-            if (responseFromServer.Length > 50)
+            try
             {
-                RootObject rb = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
-                cacheOfStation.Set(numOfStation, rb.ToString(), cacheItemPolicy);
-                return rb.ToString();
+                response = request.GetResponse();
+                // Display the status.
+                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+                // Get the stream containing content returned by the server.
+                dataStream = response.GetResponseStream();
+                // Open the stream using a StreamReader for easy access.
+                reader = new StreamReader(dataStream);
+                // Read the content.
+                responseFromServer = reader.ReadToEnd();
+                if (responseFromServer.Length > 50)
+                {
+                    RootObject rb = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
+                    cacheOfStation.Set(numOfStation, rb.ToString(), cacheItemPolicy);
+                    return rb.ToString();
+                }
+                else
+                {
+                    return "Not Found!";
+                }
             }
-            else
+            catch (WebException wex)
             {
+                Console.WriteLine("Web Exception");
                 return "Not Found!";
             }
+
         }
     }
 

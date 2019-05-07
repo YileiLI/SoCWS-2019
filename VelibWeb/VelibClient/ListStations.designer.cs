@@ -51,10 +51,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.searchBox = new System.Windows.Forms.TextBox();
             this.table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,7 +66,7 @@
             // 
             this.numStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numStation.Location = new System.Drawing.Point(940, 140);
-            this.numStation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numStation.Margin = new System.Windows.Forms.Padding(4);
             this.numStation.Name = "numStation";
             this.numStation.Size = new System.Drawing.Size(333, 32);
             this.numStation.TabIndex = 0;
@@ -108,7 +108,7 @@
             // 
             this.bank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bank.Location = new System.Drawing.Point(424, 300);
-            this.bank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bank.Margin = new System.Windows.Forms.Padding(4);
             this.bank.Name = "bank";
             this.bank.Size = new System.Drawing.Size(225, 35);
             this.bank.TabIndex = 15;
@@ -162,7 +162,7 @@
             // 
             this.numOfStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numOfStation.Location = new System.Drawing.Point(424, 4);
-            this.numOfStation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numOfStation.Margin = new System.Windows.Forms.Padding(4);
             this.numOfStation.Name = "numOfStation";
             this.numOfStation.Size = new System.Drawing.Size(225, 35);
             this.numOfStation.TabIndex = 9;
@@ -171,7 +171,7 @@
             // 
             this.available_stands.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.available_stands.Location = new System.Drawing.Point(424, 148);
-            this.available_stands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.available_stands.Margin = new System.Windows.Forms.Padding(4);
             this.available_stands.Name = "available_stands";
             this.available_stands.Size = new System.Drawing.Size(225, 35);
             this.available_stands.TabIndex = 11;
@@ -180,7 +180,7 @@
             // 
             this.available_bikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.available_bikes.Location = new System.Drawing.Point(424, 228);
-            this.available_bikes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.available_bikes.Margin = new System.Windows.Forms.Padding(4);
             this.available_bikes.Name = "available_bikes";
             this.available_bikes.Size = new System.Drawing.Size(225, 35);
             this.available_bikes.TabIndex = 13;
@@ -223,7 +223,7 @@
             this.table.Controls.Add(this.label4, 0, 1);
             this.table.Controls.Add(this.label6, 0, 0);
             this.table.Location = new System.Drawing.Point(624, 235);
-            this.table.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table.Margin = new System.Windows.Forms.Padding(4);
             this.table.Name = "table";
             this.table.RowCount = 5;
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.4F));
@@ -238,7 +238,7 @@
             // 
             this.bikeStands.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bikeStands.Location = new System.Drawing.Point(424, 71);
-            this.bikeStands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bikeStands.Margin = new System.Windows.Forms.Padding(4);
             this.bikeStands.Name = "bikeStands";
             this.bikeStands.Size = new System.Drawing.Size(225, 35);
             this.bikeStands.TabIndex = 10;
@@ -261,7 +261,7 @@
             this.list.FormattingEnabled = true;
             this.list.ItemHeight = 29;
             this.list.Location = new System.Drawing.Point(73, 124);
-            this.list.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.list.Margin = new System.Windows.Forms.Padding(4);
             this.list.Name = "list";
             this.list.Size = new System.Drawing.Size(465, 497);
             this.list.TabIndex = 25;
@@ -283,7 +283,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(1268, 40);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(71, 69);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -295,7 +295,7 @@
             this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(484, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(101, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -313,11 +313,20 @@
             this.panel1.Controls.Add(this.numStation);
             this.panel1.Controls.Add(this.nameLabel);
             this.panel1.Location = new System.Drawing.Point(45, 151);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1339, 680);
             this.panel1.TabIndex = 32;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // searchBox
+            // 
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBox.Location = new System.Drawing.Point(73, 91);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(465, 35);
+            this.searchBox.TabIndex = 29;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // label5
             // 
@@ -335,31 +344,23 @@
             // 
             this.total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total.Location = new System.Drawing.Point(73, 31);
-            this.total.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.total.Margin = new System.Windows.Forms.Padding(4);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(63, 35);
             this.total.TabIndex = 27;
+            this.total.TextChanged += new System.EventHandler(this.total_TextChanged);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(69, 40);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(67, 69);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 33;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // searchBox
-            // 
-            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(73, 91);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(465, 35);
-            this.searchBox.TabIndex = 29;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // ListStations
             // 
@@ -376,7 +377,7 @@
             this.Controls.Add(this.no_res);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.answer);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListStations";
             this.Text = "Result";
             this.Load += new System.EventHandler(this.Form1_Load);

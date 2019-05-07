@@ -232,6 +232,11 @@ namespace VelibClient
 
             }
         }
+
+        private void total_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
