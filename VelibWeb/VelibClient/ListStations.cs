@@ -13,6 +13,7 @@ namespace VelibClient
     {
         private string _ville;
         private string result;
+        private List<string> names = new List<string>();
         VelibServiceClient client = new VelibServiceClient();
         public ListStations(string ville)
         {
@@ -25,7 +26,7 @@ namespace VelibClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<string> names = new List<string>();
+            
             string res = "";
             res = client.GetAllStationsByCity(_ville);
             // responseFromServer = reader.ReadToEnd();
@@ -165,6 +166,8 @@ namespace VelibClient
         {
             string text = list.GetItemText(list.SelectedItem);
             string num = text.Split('-')[0].Replace(" ", "");
+            if (num.Equals("0"))
+                num = "555";
             string tmp = client.GetInfomationsOfStationByName(_ville, num);
             if(tmp!="Not Found!")
             {
@@ -183,7 +186,16 @@ namespace VelibClient
                 {
                     bank.Text = "Not availble";
                 }
-                numStation.Text = res[1].Split('-')[1];
+                if (num.Equals("555")) //if n. station is 555, the name needs to be traited differently.
+                                       //coz it is "0-555 - ATELIER VELO"
+                {
+                    numStation.Text = res[1].Split('-')[2];
+                }
+                else
+                {
+                    numStation.Text = res[1].Split('-')[1];
+                }
+                
                 table.Visible = true;
             }
             else
@@ -198,6 +210,27 @@ namespace VelibClient
             Homepage home = new Homepage();
             home.Show();
             this.Hide();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            //update the listBox with the text of searchBox
+            list.Items.Clear();
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(searchBox.Text))
+                {
+                    if (names[i].IndexOf(searchBox.Text, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    {
+                        list.Items.Add(names[i]);
+                    }
+                }
+                else
+                {
+                    list.Items.Add(names[i]);
+                }
+
+            }
         }
     }
 
