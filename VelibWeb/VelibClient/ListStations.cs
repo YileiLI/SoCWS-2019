@@ -24,11 +24,11 @@ namespace VelibClient
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             
             string res = "";
-            res = client.GetAllStationsByCity(_ville);
+            res = await client.GetAllStationsByCityAsync(_ville);
             // responseFromServer = reader.ReadToEnd();
             //List<String> listStations = null;
             Console.WriteLine(numStation.Text);
@@ -162,13 +162,13 @@ namespace VelibClient
 
         }
 
-        private void list_SelectedIndexChanged(object sender, EventArgs e)
+        private async void list_SelectedIndexChanged(object sender, EventArgs e)
         {
             string text = list.GetItemText(list.SelectedItem);
             string num = text.Split('-')[0].Replace(" ", "");
             if (num.Equals("0"))
                 num = "555";
-            string tmp = client.GetInfomationsOfStationByName(_ville, num);
+            string tmp = await client.GetInfomationsOfStationByNameAsync(_ville, num);
             if(tmp!="Not Found!")
             {
                 result = tmp;
@@ -236,6 +236,27 @@ namespace VelibClient
         private void total_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            //update the listBox with the text of searchBox
+            list.Items.Clear();
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(searchBox.Text))
+                {
+                    if (names[i].IndexOf(searchBox.Text, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    {
+                        list.Items.Add(names[i]);
+                    }
+                }
+                else
+                {
+                    list.Items.Add(names[i]);
+                }
+
+            }
         }
     }
 

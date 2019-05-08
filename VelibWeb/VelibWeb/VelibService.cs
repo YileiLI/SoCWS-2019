@@ -33,7 +33,7 @@ namespace VelibWeb
         }
 
        
-        public string GetAllStationsByCity(string nameOfCity)
+        public async Task<string> GetAllStationsByCityAsync(string nameOfCity)
         {
             if (cacheOfCity[nameOfCity] != null)
             {
@@ -45,7 +45,7 @@ namespace VelibWeb
                 "https://api.jcdecaux.com/vls/v1/stations?contract="+nameOfCity+"&apiKey=3857a4c9c72e34c322bd73cd36dec39dd7d15dd9");
             try
             {
-                response = request.GetResponse();
+                response = await request.GetResponseAsync();
                 // Display the status.
                 Console.WriteLine(((HttpWebResponse)response).StatusDescription);
                 // Get the stream containing content returned by the server.
@@ -68,7 +68,7 @@ namespace VelibWeb
             return res;
         }
 
-        public string GetInfomationsOfStationByName(string nameOfCity,string numOfStation)
+        public async Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity,string numOfStation)
         {
             if (cacheOfStation[numOfStation]!=null)
             {
@@ -79,7 +79,7 @@ namespace VelibWeb
             Console.WriteLine(nameOfCity + numOfStation);
             try
             {
-                response = request.GetResponse();
+                response = await request.GetResponseAsync();
                 // Display the status.
                 Console.WriteLine(((HttpWebResponse)response).StatusDescription);
                 // Get the stream containing content returned by the server.

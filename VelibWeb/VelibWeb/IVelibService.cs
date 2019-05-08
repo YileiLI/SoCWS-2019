@@ -13,10 +13,10 @@ namespace VelibWeb
     public interface IVelibService
     {
         [OperationContract]
-        string GetAllStationsByCity(string nameOfCity);
+        Task<string> GetAllStationsByCityAsync(string nameOfCity);
 
         [OperationContract]
-        string GetInfomationsOfStationByName(string nameOfCity,string numOfStation);
+        Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity,string numOfStation);
     }
 }
 
