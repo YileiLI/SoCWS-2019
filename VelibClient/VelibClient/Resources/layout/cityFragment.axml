@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:columnCount="2"
+	android:rowCount="2">
+	<ImageButton
+		android:scaleType="centerInside"
+		android:src="@drawable/australia"
+		android:id="@+id/australia"
+		android:layout_columnWeight = "1"
+		android:layout_rowWeight = "1"
+		android:layout_width="100px"
+		android:layout_height="100px"
+		android:background="#ff42a5f5" />
+	<ImageButton
+		android:scaleType="centerInside"
+		android:src="@drawable/sweden"
+		android:id="@+id/sweden"
+		android:layout_columnWeight = "1"
+		android:layout_rowWeight = "1"
+		android:layout_width="100px"
+		android:layout_height="100px"
+		android:background="#ff42a5f5" />
+	<ImageButton
+		android:scaleType="centerInside"
+		android:src="@drawable/flag"
+		android:id="@+id/france"
+		android:layout_columnWeight = "1"
+		android:layout_rowWeight = "1"
+		android:layout_width="100px"
+		android:layout_height="100px"
+		android:background="#ff42a5f5" />
+	<ImageButton
+		android:id="@+id/spain"
+		android:layout_columnWeight = "1"
+		android:layout_rowWeight = "1"
+		android:layout_width="100px"
+		android:layout_height="100px"
+		android:scaleType="centerInside"
+		android:src="@drawable/spain"
+		android:background="#ff42a5f5" />
+
+
+
+
+
+</GridLayout>
