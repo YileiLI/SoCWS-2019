@@ -17,45 +17,53 @@
 </head>
 <body>
  
-    <form id="form1" runat="server">
-        <h1 aria-selected="undefined" style="font-family: 'MS Gothic'; text-align:center;font-size: 80px; font-weight: bold; color: #7A14EB">
-            Velib</h1>
-        <asp:Button ID="Button34" runat="server" Text="Go Map" Height="69px" Width="137px" OnClick="Button34_Click" />
-        <div style="text-align:center">   
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal">
-            <img src="Resource/flag.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal1">
-            <img src="Resource/spain.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal2">
-            <img src="Resource/belgium.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal3">
-            <img src="Resource/sweden.png" style="Height:100%;Width:100%"/></button>
+    <form id="form1" runat="server" style="background-color: #C8D2D9">
+        <div style="display:block">
+        <h1 aria-selected="undefined" style="font-family: Arial; text-align:center;font-size: 130px; font-weight: bold; color: #002537; background-color: #006699;">
+            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" Height="103px" ImageUrl="~/Resource/question (1).png" Width="111px" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Image ID="Image1" runat="server" Height="96px" ImageUrl="~/Resource/bicycle.png" Width="114px" />
+            Velib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:ImageButton ID="ImageButton1" runat="server" Height="95px" ImageUrl="~/Resource/route.png" OnClick="ImageButton1_Click" Width="131px" />
+        </h1>
+
+            </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
+&nbsp;<div style="text-align:center">   
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal">
+            <img src="Resource/flag.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal1">
+            <img src="Resource/spain.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal2">
+            <img src="Resource/belgium.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal3">
+            <img src="Resource/sweden.png" style="Height:90%; Width:80%"/></button>
 
          </div> 
 
                 <div style="text-align:center">   
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal4">
-            <img src="Resource/australia.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal5">
-            <img src="Resource/ireland.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal6">
-            <img src="Resource/norway.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal7">
-            <img src="Resource/japan.png" style="Height:100%;Width:100%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal4">
+            <img src="Resource/australia.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal5">
+            <img src="Resource/ireland.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal6">
+            <img src="Resource/norway.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal7">
+            <img src="Resource/japan.png" style="Height:90%; Width:80%"/></button>
 
          </div> 
 
        
 
                 <div style="text-align:center">   
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal8">
-            <img src="Resource/lithuania.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal9">
-            <img src="Resource/slovakia.png" style="Height:100%;Width:100%"/></button>
-            <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal10">
-            <img src="Resource/russia.png" style="Height:100%;Width:100%"/></button>
-                                <button type="button" style="Height:304px;Width:284px" data-toggle="modal" data-target="#exampleModal11">
-            <img src="Resource/luxembourg.png" style="Height:100%;Width:100%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal8">
+            <img src="Resource/lithuania.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal9">
+            <img src="Resource/slovakia.png" style="Height:90%; Width:80%"/></button>
+            <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal10">
+            <img src="Resource/russia.png" style="Height:90%; Width:80%"/></button>
+                                <button type="button" style="Height:150px;Width:200px" data-toggle="modal" data-target="#exampleModal11">
+            <img src="Resource/luxembourg.png" style="Height:90%; Width:80%"/></button>
      
          </div> 
 

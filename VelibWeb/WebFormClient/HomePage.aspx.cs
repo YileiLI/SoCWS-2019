@@ -173,7 +173,7 @@ public partial class HomePage : System.Web.UI.Page
     }
 
 
-    protected void Button34_Click(object sender, EventArgs e)
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
         Server.Transfer("googleMap.aspx");
     }
