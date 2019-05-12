@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="googleMap.aspx.cs" Inherits="googleMap" %>
+﻿<%@ Page Async="true"  Language="C#" AutoEventWireup="true" CodeFile="googleMap.aspx.cs" Inherits="googleMap" %>
 
 <!DOCTYPE html>
 
@@ -21,7 +21,7 @@
         }
     </style>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx25Hq3Xadi0gqGIKVx8S7z9YfhJAp8gk&callback=initMap"
-            ></script>
+           async defer ></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -107,7 +107,7 @@
 
         <p>
 
-        <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Back" OnClick="Button2_Click" />
         
         </p>
         
