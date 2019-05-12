@@ -152,8 +152,8 @@ namespace WebClientGoogle
                 res = result.Split('\n').ToList();
                 string ordi = res[6] + "," + res[7];
                 ordi = ordi.Replace(" ", "");
-                start.Text = ListBox1.SelectedItem.Text;
-                realStart.Text = ordi;
+                start.Text = ordi;
+                //realStart.Text = ordi;
             }
             else
             {
@@ -210,7 +210,8 @@ namespace WebClientGoogle
                 res = result.Split('\n').ToList();
                 string ordi = res[6] + "," + res[7];
                 ordi = ordi.Replace(" ", "");
-                realEnd.Text = ordi;
+                //realEnd.Text = ordi;
+                end.Text = ordi;
             }
             else
             {

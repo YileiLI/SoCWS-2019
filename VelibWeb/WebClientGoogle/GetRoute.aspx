@@ -80,12 +80,12 @@
                 directionsDisplay.setMap(map);
                 var start = document.getElementById('start').value;
                 var end = document.getElementById('end').value;
-                if (document.getElementById('OriginOption').value === 'From a Velib Station') {
-                    start = document.getElementById('realStart').value;
-                }
-                if (document.getElementById('DropDownList2').value === 'To a Velib Station') {
-                    end = document.getElementById('realEnd').value;
-                }
+                //if (document.getElementById('OriginOption').value === 'From a Velib Station') {
+                //    start = document.getElementById('realStart').value;
+                //}
+                //if (document.getElementById('DropDownList2').value === 'To a Velib Station') {
+                //    end = document.getElementById('realEnd').value;
+                //}
                 directionsService.route({
                     origin: start,
                     destination: end,
