@@ -75,6 +75,7 @@ public partial class cityList : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Server.Transfer("HomePages.aspx");
+        string url = "HomePage.aspx";
+        Response.Redirect(url, false);
     }
 }

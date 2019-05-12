@@ -21,7 +21,7 @@
         }
     </style>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx25Hq3Xadi0gqGIKVx8S7z9YfhJAp8gk&callback=initMap"
-            ></script>
+           async defer ></script>
 </head>
 <body>
     <form id="form1" runat="server">
