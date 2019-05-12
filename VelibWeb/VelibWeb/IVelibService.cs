@@ -17,6 +17,10 @@ namespace VelibWeb
 
         [OperationContract]
         Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity,string numOfStation);
+
+        [OperationContract]
+        Task<List<string>> GetRouteAsync(string origin, string destination);
+
     }
 }
 

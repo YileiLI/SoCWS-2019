@@ -30,8 +30,9 @@ namespace VelibConsoleClient
 
                 // Ask the user to choose a function
                 Console.WriteLine("Choose a function from the following list:");
-                Console.WriteLine("\ta - Get the list of velib stations for a given city");
-                Console.WriteLine("\tb - Get the number of the available Velib at a given station in a given city.");
+                Console.WriteLine("\t1 - Get the list of velib stations for a given city");
+                Console.WriteLine("\t2 - Get the number of the available Velib at a given station in a given city.");
+                Console.WriteLine("\t3 - Get the route from one place to another");
                 Console.WriteLine("\th - Help");
                 Console.Write("Your option? ");
 
@@ -41,16 +42,19 @@ namespace VelibConsoleClient
                 {
                     switch (op)
                     {
-                        case "a":
-                            getStationList();
+                        case "1":
+                            GetStationList();
                             break;
-                        case "b":
-                            getStationInfo();
+                        case "2":
+                            GetStationInfo();
+                            break;
+                        case "3":
+                            GetRoute();
                             break;
                         case "h":
                             Console.WriteLine("\tThis is a console client that allows to access to the IWS " +
                                 "and request for the list of velib stations for a given city and the number of the available Velib at a given station. " +
-                                "If you don't know the exact number of a station, please enter \'a\' to get the full list first.");
+                                "If you don't know the exact number of a station, please enter \'1\' to get the full list first.");
                             Console.WriteLine("P.S. For now, we offer the service for the following cities: Rouen, Toulouse, Luxembourg, Dublin, Valence, Stockholm, " +
                                 "Santander, Lund, Amiens, Mulhouse, Lillestrom, Lyon, Ljubljana, Seville, Nancy, Namur, Creteil, Cergy-Pontoise, Bruxelles-Capitale, Vilnius, " +
                                 "Kazan, Toyama, Marseille, Nantes, Brisbane and Besancon.");
@@ -58,6 +62,7 @@ namespace VelibConsoleClient
                             break;
 
                         default:
+                            GetRoute();
                             break;
 
                     }
@@ -70,14 +75,14 @@ namespace VelibConsoleClient
                 }
 
 
-                end();
+                End();
                 
             }
             return;
 
         }
 
-        private static async void getStationList()
+        private static async void GetStationList()
         {
             // Declare variables and set to empty
             string cityInput = "";
@@ -147,7 +152,7 @@ namespace VelibConsoleClient
             
         }
 
-        private static async void getStationInfo()
+        private static async void GetStationInfo()
         {
             // Declare variables and set to empty
             string cityInput = "";
@@ -204,7 +209,32 @@ namespace VelibConsoleClient
             
         }
 
-        private static void end()
+        private static async void GetRoute()
+        {
+            // Declare variables and set to empty
+            string originInput = "";
+            string destinationInput = "";
+            List<string> names = new List<string>();
+
+            Console.WriteLine("Type the orgin place please, and then press Enter: ");
+            originInput = Console.ReadLine();
+            Console.WriteLine("Type the destination place please, and then press Enter: ");
+            destinationInput = Console.ReadLine();
+            //wait for the result
+            List<string> result = client.GetRouteAsync(originInput, destinationInput).Result.ToList<string>();
+            foreach (var item in result)
+            {
+                string ins = item.Replace("<b>", "");
+                ins = ins.Replace("</b>", "");
+                ins = ins.Replace("</div>", "");
+                ins = ins.Replace("<div style=\"font-size:0.9em\">", " ");
+                Console.WriteLine(ins);
+            }
+            
+
+        }
+
+            private static void End()
         {
             Console.WriteLine("------------------------\n");
 
