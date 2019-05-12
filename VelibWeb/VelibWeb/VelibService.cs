@@ -35,8 +35,11 @@ namespace VelibWeb
        
         public async Task<string> GetAllStationsByCityAsync(string nameOfCity)
         {
+            DateTime start = DateTime.Now;
+            MonitorStat.AddRequestFromClient();
             if (cacheOfCity[nameOfCity] != null)
             {
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
                 return (string)cacheOfCity[nameOfCity];
             }
         
@@ -52,6 +55,7 @@ namespace VelibWeb
                 dataStream = response.GetResponseStream();
                 // Open the stream using a StreamReader for easy access.
                 reader = new StreamReader(dataStream);
+                MonitorStat.AddRequestToVelib();
                 // Read the content.
                 responseFromServer = reader.ReadToEnd();
                 List<RootObject> rb = JsonConvert.DeserializeObject<List<RootObject>>(responseFromServer);
@@ -60,18 +64,24 @@ namespace VelibWeb
                     res = res + ob.name + "\n";
                 }
                 cacheOfCity.Set(nameOfCity, res, cacheItemPolicy);
+                MonitorStat.AddCacheInfo();
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
             }
             catch (WebException wex)
             {
-                Console.WriteLine("Web Exception");
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
+                Console.WriteLine("Web Exception" + wex);
             }
             return res;
         }
 
         public async Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity,string numOfStation)
         {
+            DateTime start = DateTime.Now;
+            MonitorStat.AddRequestFromClient();
             if (cacheOfStation[numOfStation]!=null)
             {
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
                 return (string)cacheOfStation[numOfStation];
             }
             request = WebRequest.Create(
@@ -87,21 +97,26 @@ namespace VelibWeb
                 // Open the stream using a StreamReader for easy access.
                 reader = new StreamReader(dataStream);
                 // Read the content.
+                MonitorStat.AddRequestToVelib();
                 responseFromServer = reader.ReadToEnd();
                 if (responseFromServer.Length > 50)
                 {
                     RootObject rb = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
                     cacheOfStation.Set(numOfStation, rb.ToString(), cacheItemPolicy);
+                    MonitorStat.AddCacheInfo();
+                    MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
                     return rb.ToString();
                 }
                 else
                 {
+                    MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
                     return "Not Found!";
                 }
             }
             catch (WebException wex)
             {
-                Console.WriteLine("Web Exception");
+                Console.WriteLine("Web Exception" + wex);
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
                 return "Not Found!";
             }
 
