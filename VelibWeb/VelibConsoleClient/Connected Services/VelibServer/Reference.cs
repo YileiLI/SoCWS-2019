@@ -26,6 +26,12 @@ namespace VelibConsoleClient.VelibServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetInfomationsOfStationByName", ReplyAction="http://tempuri.org/IVelibService/GetInfomationsOfStationByNameResponse")]
         System.Threading.Tasks.Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity, string numOfStation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetRoute", ReplyAction="http://tempuri.org/IVelibService/GetRouteResponse")]
+        string[] GetRoute(string origin, string destination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetRoute", ReplyAction="http://tempuri.org/IVelibService/GetRouteResponse")]
+        System.Threading.Tasks.Task<string[]> GetRouteAsync(string origin, string destination);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace VelibConsoleClient.VelibServer {
         
         public System.Threading.Tasks.Task<string> GetInfomationsOfStationByNameAsync(string nameOfCity, string numOfStation) {
             return base.Channel.GetInfomationsOfStationByNameAsync(nameOfCity, numOfStation);
+        }
+        
+        public string[] GetRoute(string origin, string destination) {
+            return base.Channel.GetRoute(origin, destination);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetRouteAsync(string origin, string destination) {
+            return base.Channel.GetRouteAsync(origin, destination);
         }
     }
 }

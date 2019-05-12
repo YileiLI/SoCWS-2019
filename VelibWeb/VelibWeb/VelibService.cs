@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -121,7 +122,82 @@ namespace VelibWeb
             }
 
         }
+
+        public async Task<List<string>> GetRouteAsync(string origin, string destination)
+        {
+            var res = new List<string>();
+            string ways = "";
+            try
+            {
+                
+                JObject route = (JObject)(await GetArray("https://maps.googleapis.com/maps/api/directions/json?mode=bicycling&origin=" + 
+                    origin + "&destination="+ destination +"&key=AIzaSyBx25Hq3Xadi0gqGIKVx8S7z9YfhJAp8gk"));
+                
+                if (((string)route["geocoded_waypoints"][0]["geocoder_status"]).Equals("OK") 
+                    && ((string)route["geocoded_waypoints"][1]["geocoder_status"]).Equals("OK"))
+                {
+
+                    if (route["routes"].HasValues)
+                    {
+                        ways = "Distance: " + route["routes"][0]["legs"][0]["distance"]["text"] + "\nDuration: "
+                            + route["routes"][0]["legs"][0]["duration"]["text"];
+                        res.Add(ways);
+                        int i = 1;
+                        foreach (var step in route["routes"][0]["legs"][0]["steps"])
+                        {
+                        
+                            ways = i + ". " + step["html_instructions"] + "\n\t" +step["distance"]["text"] 
+                                + "\n\t" + step["duration"]["text"];
+                            res.Add(ways);
+                            i++;
+                        }
+                        
+                    }
+                    else
+                    {
+                        ways = "Couldn't find routes for you.";
+                        res.Add(ways);
+                    }
+                }
+                else
+                {
+                    ways = "Try Again";
+                    res.Add(ways);
+                }
+                
+            }
+            catch (WebException wex)
+            {
+                Console.WriteLine("Web Exception");
+                ways = "Not Found!";
+                res.Add(ways);
+            }
+            return res;
+        }
+        private async Task<JObject> GetArray(string requestUrl)
+        {
+            // Create a request for the URL. 
+            WebRequest request = WebRequest.Create(requestUrl);
+            // If required by the server, set the credentials.
+            // request.Credentials = CredentialCache.DefaultCredentials;
+            // Get the response.
+            WebResponse response = await request.GetResponseAsync();
+            // Display the status.
+            // Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            // Get the stream containing content returned by the server.
+            Stream dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            // Display the content.
+            return JObject.Parse(responseFromServer);
+        }
+
+
     }
+
+    
 
     public class Position
     {
@@ -152,7 +228,9 @@ namespace VelibWeb
                 bike_stands + "\n" +
                 available_bike_stands + "\n" +
                 available_bikes + "\n" +
-                banking;
+                banking + "\n" +
+                position.lat + "\n" +
+                position.lng;
         }
     }
 
