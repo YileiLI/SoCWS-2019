@@ -194,6 +194,27 @@ namespace VelibWeb
             return JObject.Parse(responseFromServer);
         }
 
+        public async Task<string> GetHelpAsync(int plateform)
+        {
+            string str = "";
+            switch (plateform)
+            {
+                case 0://console
+                    str += "\tThis is a console client that allows to access to the IWS " +
+                                "and request for the list of velib stations for a given city and the number of the available Velib at a given station. " +
+                                "If you don't know the exact number of a station, please enter \'1\' to get the full list first.\n"
+                                + "P.S. For now, we offer the service for the following cities: Rouen, Toulouse, Luxembourg, Dublin, Valence, Stockholm, " +
+                                "Santander, Lund, Amiens, Mulhouse, Lillestrom, Lyon, Ljubljana, Seville, Nancy, Namur, Creteil, Cergy-Pontoise, Bruxelles-Capitale, Vilnius, " +
+                                "Kazan, Toyama, Marseille, Nantes, Brisbane and Besancon.";
+                    break;
+                default:
+                    str += "Press the flag of which country you want to know about the Velib Service and select the city." +
+                        "Press the route icon to get the route information supported by Google Map. ";
+                    break;
+            }
+            return str;
+        }
+
 
     }
 

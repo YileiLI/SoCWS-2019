@@ -21,6 +21,9 @@ namespace VelibWeb
         [OperationContract]
         Task<List<string>> GetRouteAsync(string origin, string destination);
 
+        [OperationContract]
+        Task<string> GetHelpAsync(int plateform);
+
     }
 }
 

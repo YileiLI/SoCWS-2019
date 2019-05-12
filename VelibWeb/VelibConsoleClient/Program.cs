@@ -52,12 +52,7 @@ namespace VelibConsoleClient
                             GetRoute();
                             break;
                         case "h":
-                            Console.WriteLine("\tThis is a console client that allows to access to the IWS " +
-                                "and request for the list of velib stations for a given city and the number of the available Velib at a given station. " +
-                                "If you don't know the exact number of a station, please enter \'1\' to get the full list first.");
-                            Console.WriteLine("P.S. For now, we offer the service for the following cities: Rouen, Toulouse, Luxembourg, Dublin, Valence, Stockholm, " +
-                                "Santander, Lund, Amiens, Mulhouse, Lillestrom, Lyon, Ljubljana, Seville, Nancy, Namur, Creteil, Cergy-Pontoise, Bruxelles-Capitale, Vilnius, " +
-                                "Kazan, Toyama, Marseille, Nantes, Brisbane and Besancon.");
+                            GetHelp();
                             
                             break;
 
@@ -80,6 +75,11 @@ namespace VelibConsoleClient
             }
             return;
 
+        }
+
+        private static void GetHelp()
+        {
+            Console.WriteLine(client.GetHelpAsync(0).Result);
         }
 
         private static async void GetStationList()
@@ -141,7 +141,7 @@ namespace VelibConsoleClient
                     }
                     else
                     {
-                        Console.WriteLine("DoSomething!");
+                        Console.WriteLine("Please return to main page to get the correct No.");
                     }
                 }
             }
@@ -203,7 +203,7 @@ namespace VelibConsoleClient
                 }
                 else
                 {
-                    Console.WriteLine("DoSomething!");
+                    Console.WriteLine("Please return to main page to get the correct No.");
                 }
             }
             
@@ -214,12 +214,131 @@ namespace VelibConsoleClient
             // Declare variables and set to empty
             string originInput = "";
             string destinationInput = "";
+            string stationInput = "";
+            string cityInput = "";
+            string resu = "";
             List<string> names = new List<string>();
 
-            Console.WriteLine("Type the orgin place please, and then press Enter: ");
-            originInput = Console.ReadLine();
-            Console.WriteLine("Type the destination place please, and then press Enter: ");
-            destinationInput = Console.ReadLine();
+            Console.WriteLine("Choose the orgin place please, and then press Enter: ");
+            Console.WriteLine("\t1 - From a velib station in a city");
+            Console.WriteLine("\t2 - From any place you want.");
+
+            string op = Console.ReadLine();
+
+            try
+            {
+                switch (op)
+                {
+                    case "1":
+                        Console.WriteLine("Please enter the no. of the station and city seperated by space (e.g. 555 Lyon): ");
+                        List<string> input = new List<string>();
+                        input = Console.ReadLine().Split(' ').ToList();
+                        stationInput = input[0];
+                        if (input.Count == 2)
+                        {
+                            cityInput = input[1];
+                        }
+                        if (!stationInput.Equals("") && !cityInput.Equals(""))
+                        {
+                            string tmp = client.GetInfomationsOfStationByNameAsync(cityInput, stationInput).Result;
+
+                            if (tmp != "Not Found!")
+                            {
+                                resu = tmp;
+                                List<string> res = new List<string>();
+                                res = resu.Split('\n').ToList();
+                                string ordi = res[6] + "," + res[7];
+                                ordi = ordi.Replace(" ", "");
+                                originInput = ordi;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please return to main page to get the correct No.");
+                            }
+                        }
+                
+                       
+                        break;
+                    case "2":
+                        Console.WriteLine("Please enter your origin: ");
+                        originInput = Console.ReadLine();
+                        break;
+
+                    default:
+                        break;
+
+                }
+
+
+            }
+
+
+            catch (Exception e)
+            {
+                Console.WriteLine("Oh no! An exception occurred trying to do the search.\n - Details: " + e.Message);
+            }
+
+            Console.WriteLine("Choose the destination place please, and then press Enter: ");
+            Console.WriteLine("\t1 - To a velib station in a city");
+            Console.WriteLine("\t2 - To any place you want.");
+
+            op = Console.ReadLine();
+
+            try
+            {
+                switch (op)
+                {
+                    case "1":
+                        Console.WriteLine("Please enter the no. of the station and city seperated by space (e.g. 555 Lyon): ");
+                        List<string> input = new List<string>();
+                        input = Console.ReadLine().Split(' ').ToList();
+                        stationInput = input[0];
+                        if (input.Count == 2)
+                        {
+                            cityInput = input[1];
+                        }
+                        if (!stationInput.Equals("") && !cityInput.Equals(""))
+                        {
+                            string tmp = client.GetInfomationsOfStationByNameAsync(cityInput, stationInput).Result;
+
+                            if (tmp != "Not Found!")
+                            {
+                                resu = tmp;
+                                List<string> res = new List<string>();
+                                res = resu.Split('\n').ToList();
+                                string ordi = res[6] + "," + res[7];
+                                ordi = ordi.Replace(" ", "");
+                                destinationInput = ordi;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please return to main page to get the correct No.");
+                            }
+                        }
+
+
+                        break;
+                    case "2":
+                        Console.WriteLine("Please enter your destination: ");
+                        destinationInput = Console.ReadLine();
+                        break;
+
+                    default:
+                        break;
+
+                }
+
+
+            }
+
+
+            catch (Exception e)
+            {
+                Console.WriteLine("Oh no! An exception occurred trying to do the search.\n - Details: " + e.Message);
+            }
+            
             //wait for the result
             List<string> result = client.GetRouteAsync(originInput, destinationInput).Result.ToList<string>();
             foreach (var item in result)
