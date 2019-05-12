@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelibConsoleClient", "Velib
 		{071D559A-68F1-4680-BEDC-27CAC7F979BE} = {071D559A-68F1-4680-BEDC-27CAC7F979BE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientGoogle", "..\..\..\Downloads\WebClientGoogle\WebClientGoogle\WebClientGoogle.csproj", "{161A6DDD-4F92-4124-AF55-91181B114529}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientGoogle", "WebClientGoogle\WebClientGoogle.csproj", "{161A6DDD-4F92-4124-AF55-91181B114529}"
 	ProjectSection(ProjectDependencies) = postProject
 		{071D559A-68F1-4680-BEDC-27CAC7F979BE} = {071D559A-68F1-4680-BEDC-27CAC7F979BE}
 	EndProjectSection

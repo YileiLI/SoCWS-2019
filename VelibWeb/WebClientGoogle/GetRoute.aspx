@@ -102,8 +102,8 @@
             }
         </script>
         
-        <asp:TextBox ID="realStart" runat="server" Visible="True"></asp:TextBox>
-        <asp:TextBox ID="realEnd" runat="server" Visible="True"></asp:TextBox>
+        <asp:TextBox ID="realStart" runat="server" Visible="False"></asp:TextBox>
+        <asp:TextBox ID="realEnd" runat="server" Visible="False"></asp:TextBox>
         
     </form>
 </body>
