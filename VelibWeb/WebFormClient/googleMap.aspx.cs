@@ -124,7 +124,7 @@ public partial class googleMap : System.Web.UI.Page
             res = result.Split('\n').ToList();
             string ordi = res[6] + "," + res[7];
             ordi = ordi.Replace(" ", "");
-            realEnd.Text = ordi;
+            end.Text = ordi;
         }
         else
         {

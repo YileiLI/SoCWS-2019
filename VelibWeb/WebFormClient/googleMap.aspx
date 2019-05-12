@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="googleMap.aspx.cs" Inherits="googleMap" %>
+﻿<%@ Page Async="true"  Language="C#" AutoEventWireup="true" CodeFile="googleMap.aspx.cs" Inherits="googleMap" %>
 
 <!DOCTYPE html>
 
@@ -107,7 +107,7 @@
 
         <p>
 
-        <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Back" OnClick="Button2_Click" />
         
         </p>
         
