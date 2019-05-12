@@ -79,4 +79,30 @@ public partial class cityList : System.Web.UI.Page
         string url = "HomePage.aspx";
         Response.Redirect(url, false);
     }
+
+    protected async void search_TextChanged(object sender, EventArgs e)
+    {
+        ListBox1.Items.Clear();
+        string res = "";
+        res = await client.GetAllStationsByCityAsync(city);
+        // responseFromServer = reader.ReadToEnd();
+        //List<String> listStations = null;
+        names = res.Split('\n').ToList();
+        names.Sort();
+        for (int i = 0; i < names.Count; i++)
+        {
+            if (!search.Text.Equals(""))
+            {
+                if (names[i].IndexOf(search.Text, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                {
+                    ListBox1.Items.Add(names[i]);
+                }
+            }
+            else
+            {
+                ListBox1.Items.Add(names[i]);
+            }
+
+        }
+    }
 }

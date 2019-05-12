@@ -36,7 +36,7 @@
                 <asp:ListItem>From any place</asp:ListItem>
                 <asp:ListItem>From a Velib Station</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="start" runat="server" Width="305px"></asp:TextBox>
+            <asp:TextBox ID="start" runat="server" Width="305px" AutoPostBack="True" ontextchanged="start_TextChanged"></asp:TextBox>
             <asp:ListBox ID="ListBox1" runat="server" Width="308px" Visible="False" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
 
 
@@ -46,7 +46,7 @@
                 <asp:ListItem>To any place</asp:ListItem>
                 <asp:ListItem>To a Velib Station</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="end" runat="server" Width="305px"></asp:TextBox>
+            <asp:TextBox ID="end" runat="server" Width="305px" ontextchanged="end_TextChanged" AutoPostBack="true"></asp:TextBox>
             <asp:ListBox ID="ListBox2" runat="server" Width="308px" Visible="False" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
 
 
@@ -101,9 +101,7 @@
                 });
             }
         </script>
-        
-        <asp:TextBox ID="realStart" runat="server" Visible="False" OnTextChanged="realStart_TextChanged"></asp:TextBox>
-        <asp:TextBox ID="realEnd" runat="server" Visible="False" OnTextChanged="realEnd_TextChanged"></asp:TextBox>
+       
 
         <p>
 

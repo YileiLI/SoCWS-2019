@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="HomePage" %>
+﻿<%@ Page Async="true"  Language="C#" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="HomePage" %>
 
 <!DOCTYPE html>
 
@@ -19,8 +19,8 @@
  
     <form id="form1" runat="server" style="background-color: #C8D2D9">
         <div style="display:block">
-        <h1 aria-selected="undefined" style="font-family: Arial; text-align:center;font-size: 130px; font-weight: bold; color: #002537; background-color: #006699;">
-            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" Height="103px" ImageUrl="~/Resource/question (1).png" Width="111px" />
+        <h1 aria-selected="undefined" style="font-family: Arial; text-align:center;font-size: 130px; font-weight: bold; color: #FFFFFF; background-color: #006699;">
+            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" Height="103px" ImageUrl="~/Resource/question (1).png" Width="111px" OnClick="ImageButton2_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Image ID="Image1" runat="server" Height="96px" ImageUrl="~/Resource/bicycle.png" Width="114px" />
             Velib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

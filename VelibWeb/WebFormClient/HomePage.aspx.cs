@@ -8,9 +8,11 @@ using VelibServer;
 
 public partial class HomePage : System.Web.UI.Page
 {
+    VelibServiceClient client = new VelibServiceClient();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        VelibServiceClient client = new VelibServiceClient();
+        
     }
 
     protected void flag_Click(object sender, ImageClickEventArgs e)
@@ -160,11 +162,11 @@ public partial class HomePage : System.Web.UI.Page
         string url = "cityList.aspx?var1=" + "Lund";
         Response.Redirect(url);
     }
-            protected void stockholm_Click(object sender, EventArgs e)
-            {
-                string url = "cityList.aspx?var1=" + "Stockholm";
-                Response.Redirect(url);
-            }
+    protected void stockholm_Click(object sender, EventArgs e)
+    {
+        string url = "cityList.aspx?var1=" + "Stockholm";
+        Response.Redirect(url);
+    }
 
     protected void ljubljana_Click(object sender, EventArgs e)
     {
@@ -176,5 +178,13 @@ public partial class HomePage : System.Web.UI.Page
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
         Server.Transfer("googleMap.aspx");
+    }
+
+    protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+    {
+        string str = "";
+        str = client.GetHelpAsync(2).Result;
+        string js = "<script> confirm('" + str + "')</script>";
+        Page.RegisterStartupScript("", js);
     }
 }

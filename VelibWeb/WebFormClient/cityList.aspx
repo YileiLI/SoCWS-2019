@@ -28,6 +28,7 @@
             <div class="container">
                 <div class="row" style="font-family: Calibri; font-size: 18px; color: #3A3A3A">
                     <div class="col-sm" style="width: 50%; height: 100%">
+                        <asp:TextBox ID="search" runat="server" Width="535px" AutoPostBack="True" ontextchanged="search_TextChanged"></asp:TextBox>
                         <asp:ListBox ID="ListBox1" runat="server" Height="787px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="535px" AutoPostBack="True"></asp:ListBox>
                     </div>
                     <div class="col-sm" style="width: 50%; height: 100%; margin-top: 40px">

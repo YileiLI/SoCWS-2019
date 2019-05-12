@@ -101,7 +101,6 @@ public partial class googleMap : System.Web.UI.Page
             string ordi = res[6] + "," + res[7];
             ordi = ordi.Replace(" ", "");
             start.Text = ordi;
-            //realStart.Text = ordi;
         }
         else
         {
@@ -133,7 +132,7 @@ public partial class googleMap : System.Web.UI.Page
         }
     }
 
-    protected async void realStart_TextChanged(object sender, EventArgs e)
+    protected async void start_TextChanged(object sender, EventArgs e)
     {
         if (OriginOption.SelectedIndex == 1 && !CityTextBox.Text.Equals(""))
         {
@@ -146,7 +145,7 @@ public partial class googleMap : System.Web.UI.Page
             names.Sort();
             for (int i = 0; i < names.Count; i++)
             {
-                if (!string.IsNullOrEmpty(start.Text))
+                if (!start.Text.Equals(""))
                 {
                     if (names[i].IndexOf(start.Text, StringComparison.CurrentCultureIgnoreCase) >= 0)
                     {
@@ -160,29 +159,22 @@ public partial class googleMap : System.Web.UI.Page
 
             }
         }
-        if (OriginOption.SelectedIndex == 0)
-        {
-            realStart.Text = start.Text;
-
-        }
     }
 
-    protected async void realEnd_TextChanged(object sender, EventArgs e)
+    protected async void end_TextChanged(object sender, EventArgs e)
     {
         if (DropDownList2.SelectedIndex == 1 && !CityTextBox.Text.Equals(""))
         {
             ListBox2.Items.Clear();
             string res = "";
             res = await client.GetAllStationsByCityAsync(CityTextBox.Text);
-            // responseFromServer = reader.ReadToEnd();
-            //List<String> listStations = null;
             names = res.Split('\n').ToList();
             names.Sort();
             for (int i = 0; i < names.Count; i++)
             {
-                if (!string.IsNullOrEmpty(start.Text))
+                if (!end.Text.Equals(""))
                 {
-                    if (names[i].IndexOf(start.Text, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    if (names[i].IndexOf(end.Text, StringComparison.CurrentCultureIgnoreCase) >= 0)
                     {
                         ListBox2.Items.Add(names[i]);
                     }
@@ -193,10 +185,6 @@ public partial class googleMap : System.Web.UI.Page
                 }
 
             }
-        }
-        if (DropDownList2.SelectedIndex == 0)
-        {
-            realEnd.Text = end.Text;
         }
     }
 
