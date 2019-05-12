@@ -25,6 +25,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "Monitor\Monitor.
 		{071D559A-68F1-4680-BEDC-27CAC7F979BE} = {071D559A-68F1-4680-BEDC-27CAC7F979BE}
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormClient", "WebFormClient\", "{3B00362B-D710-4F4D-9131-C5E9B2D7FAB7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_64176"
+		Debug.AspNetCompiler.PhysicalPath = "WebFormClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64176\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_64176"
+		Release.AspNetCompiler.PhysicalPath = "WebFormClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64176\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64176"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +72,10 @@ Global
 		{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B00362B-D710-4F4D-9131-C5E9B2D7FAB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B00362B-D710-4F4D-9131-C5E9B2D7FAB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B00362B-D710-4F4D-9131-C5E9B2D7FAB7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B00362B-D710-4F4D-9131-C5E9B2D7FAB7}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

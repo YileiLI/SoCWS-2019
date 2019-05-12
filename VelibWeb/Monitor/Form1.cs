@@ -25,14 +25,9 @@ namespace Monitor
     
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            res = checkedListBox1.GetItemText(checkedListBox1.SelectedItem);
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            requestsToVelib f1;
             if (res != "")
             {
                 string choix = res.Split('.')[0];
@@ -43,13 +38,13 @@ namespace Monitor
                         textBox1.Text = "The average of delay is: " + delay + " ms";
                         break;
                     case "2":
-                        requestsToVelib f1 = new requestsToVelib(2);
+                        f1 = new requestsToVelib(2);
                         f1.Show();
                         this.Hide();
                         break;
                     case "3":
-                        requestsToVelib f2 = new requestsToVelib(3);
-                        f2.Show();
+                        f1 = new requestsToVelib(3);
+                        f1.Show();
                         this.Hide();
                         break;
                     case "4":
@@ -58,6 +53,23 @@ namespace Monitor
                         break;
                 }
             }
+        }
+
+        private void check_Click(object sender, ItemCheckEventArgs e)
+        {
+            if (checkedListBox1.CheckedItems.Count > 0)
+            {
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                    {
+                        checkedListBox1.SetItemCheckState(i, CheckState.Unchecked);
+                        checkedListBox1.SetItemChecked(i, false);
+                    }
+                }
+
+            }
+            res = checkedListBox1.Items[e.Index].ToString();
         }
     }
 }
