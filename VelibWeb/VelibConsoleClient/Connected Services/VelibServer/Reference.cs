@@ -32,6 +32,12 @@ namespace VelibConsoleClient.VelibServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetRoute", ReplyAction="http://tempuri.org/IVelibService/GetRouteResponse")]
         System.Threading.Tasks.Task<string[]> GetRouteAsync(string origin, string destination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetHelp", ReplyAction="http://tempuri.org/IVelibService/GetHelpResponse")]
+        string GetHelp(int plateform);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetHelp", ReplyAction="http://tempuri.org/IVelibService/GetHelpResponse")]
+        System.Threading.Tasks.Task<string> GetHelpAsync(int plateform);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace VelibConsoleClient.VelibServer {
         
         public System.Threading.Tasks.Task<string[]> GetRouteAsync(string origin, string destination) {
             return base.Channel.GetRouteAsync(origin, destination);
+        }
+        
+        public string GetHelp(int plateform) {
+            return base.Channel.GetHelp(plateform);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetHelpAsync(int plateform) {
+            return base.Channel.GetHelpAsync(plateform);
         }
     }
 }

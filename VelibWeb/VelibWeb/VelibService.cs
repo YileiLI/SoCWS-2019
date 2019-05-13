@@ -19,6 +19,7 @@ namespace VelibWeb
         ObjectCache cacheOfCity;
         ObjectCache cacheOfStation;
         ObjectCache cacheOfRoute;
+        ObjectCache cacheOfHelp;
         CacheItemPolicy cacheItemPolicy;
         WebRequest request;
         WebResponse response;
@@ -31,6 +32,7 @@ namespace VelibWeb
             cacheOfCity = MemoryCache.Default;
             cacheOfStation = MemoryCache.Default;
             cacheOfRoute = MemoryCache.Default;
+            cacheOfHelp = MemoryCache.Default;
             cacheItemPolicy = new CacheItemPolicy();
             cacheItemPolicy.SlidingExpiration = new TimeSpan(0, 40, 0);
         }
@@ -210,6 +212,14 @@ namespace VelibWeb
 
         public async Task<string> GetHelpAsync(int plateform)
         {
+            DateTime start = DateTime.Now;
+            MonitorStat.AddRequestFromClient();
+            if (cacheOfHelp["help"] != null)
+            {
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
+                return (string)cacheOfHelp["help"];
+            }
+
             string str = "";
             switch (plateform)
             {
@@ -226,6 +236,9 @@ namespace VelibWeb
                         "Press the route icon to get the route information supported by Google Map. ";
                     break;
             }
+            cacheOfHelp.Set("help", str, cacheItemPolicy);
+            MonitorStat.AddCacheInfo();
+            MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
             return str;
         }
 

@@ -210,6 +210,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="velib_IVelibService_GetHelp_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="velib_IVelibService_GetHelp_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8733/VelibWeb/VelibService/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -235,6 +273,12 @@
   <wsdl:message name="IVelibService_GetRoute_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRouteResponse" />
   </wsdl:message>
+  <wsdl:message name="IVelibService_GetHelp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHelp" />
+  </wsdl:message>
+  <wsdl:message name="IVelibService_GetHelp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHelpResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVelibService">
     <wsdl:operation name="GetAllStationsByCity">
       <wsdl:input wsaw:Action="http://tempuri.org/IVelibService/GetAllStationsByCity" message="tns:IVelibService_GetAllStationsByCity_InputMessage" />
@@ -247,6 +291,10 @@
     <wsdl:operation name="GetRoute">
       <wsdl:input wsaw:Action="http://tempuri.org/IVelibService/GetRoute" message="tns:IVelibService_GetRoute_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVelibService/GetRouteResponse" message="tns:IVelibService_GetRoute_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHelp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVelibService/GetHelp" message="tns:IVelibService_GetHelp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVelibService/GetHelpResponse" message="tns:IVelibService_GetHelp_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="velib_IVelibService" type="tns:IVelibService">
@@ -282,6 +330,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#velib_IVelibService_GetRoute_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHelp">
+      <soap12:operation soapAction="http://tempuri.org/IVelibService/GetHelp" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#velib_IVelibService_GetHelp_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#velib_IVelibService_GetHelp_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
