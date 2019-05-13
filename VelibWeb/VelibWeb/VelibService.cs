@@ -18,6 +18,7 @@ namespace VelibWeb
     {
         ObjectCache cacheOfCity;
         ObjectCache cacheOfStation;
+        ObjectCache cacheOfRoute;
         CacheItemPolicy cacheItemPolicy;
         WebRequest request;
         WebResponse response;
@@ -29,6 +30,7 @@ namespace VelibWeb
         {
             cacheOfCity = MemoryCache.Default;
             cacheOfStation = MemoryCache.Default;
+            cacheOfRoute = MemoryCache.Default;
             cacheItemPolicy = new CacheItemPolicy();
             cacheItemPolicy.SlidingExpiration = new TimeSpan(0, 40, 0);
         }
@@ -125,6 +127,14 @@ namespace VelibWeb
 
         public async Task<List<string>> GetRouteAsync(string origin, string destination)
         {
+            DateTime start = DateTime.Now;
+            MonitorStat.AddRequestFromClient();
+            string key = origin + destination;
+            if (cacheOfRoute[key] != null)
+            {
+                MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
+                return (List<string>)cacheOfRoute[key];
+            }
             var res = new List<string>();
             string ways = "";
             try
@@ -172,6 +182,9 @@ namespace VelibWeb
                 ways = "Not Found!";
                 res.Add(ways);
             }
+            cacheOfRoute.Set(key, res, cacheItemPolicy);
+            MonitorStat.AddCacheInfo();
+            MonitorStat.AddDelay(DateTime.Now.Subtract(start).TotalMilliseconds);
             return res;
         }
         private async Task<JObject> GetArray(string requestUrl)
@@ -189,6 +202,7 @@ namespace VelibWeb
             // Open the stream using a StreamReader for easy access.
             StreamReader reader = new StreamReader(dataStream);
             // Read the content.
+            MonitorStat.AddRequestToVelib();
             string responseFromServer = reader.ReadToEnd();
             // Display the content.
             return JObject.Parse(responseFromServer);
