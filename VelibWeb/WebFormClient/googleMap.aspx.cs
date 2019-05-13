@@ -14,10 +14,12 @@ public partial class googleMap : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!CityTextBox.Text.Equals(""))
+        
+        //string n = String.Format("{0}", Request.Form["CityTextBox"]);
+        if (!CityTextBox.ToString().Equals(""))
         {
             string res = "";
-            res = client.GetAllStationsByCityAsync(CityTextBox.Text).Result;
+            res = client.GetAllStationsByCityAsync(CityTextBox.ToString()).Result;
             // responseFromServer = reader.ReadToEnd();
             //List<String> listStations = null;
             names = res.Split('\n').ToList();
@@ -34,11 +36,11 @@ public partial class googleMap : System.Web.UI.Page
     protected async void OriginOption_SelectedIndexChanged(object sender, EventArgs e)
     {
         start.Text = "";
-        if (OriginOption.SelectedItem.Text.Equals("From a Velib Station") && !CityTextBox.Text.Equals(""))
+        if (OriginOption.SelectedItem.Text.Equals("From a Velib Station") && !CityTextBox.ToString().Equals(""))
         {
 
             string res = "";
-            res = await client.GetAllStationsByCityAsync(CityTextBox.Text);
+            res = await client.GetAllStationsByCityAsync(CityTextBox.ToString());
             Console.WriteLine(res);
             Console.WriteLine(OriginOption.SelectedValue);
             // responseFromServer = reader.ReadToEnd();
@@ -63,10 +65,10 @@ public partial class googleMap : System.Web.UI.Page
     protected async void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
         end.Text = "";
-        if (DropDownList2.SelectedIndex == 1 && !CityTextBox.Text.Equals(""))
+        if (DropDownList2.SelectedIndex == 1 && !CityTextBox.ToString().Equals(""))
         {
             string res = "";
-            res = await client.GetAllStationsByCityAsync(CityTextBox.Text);
+            res = await client.GetAllStationsByCityAsync(CityTextBox.ToString());
             // responseFromServer = reader.ReadToEnd();
             //List<String> listStations = null;
             names = res.Split('\n').ToList();
@@ -92,7 +94,7 @@ public partial class googleMap : System.Web.UI.Page
         string num = text.Split('-')[0].Replace(" ", "");
         if (num.Equals("0"))
             num = "555";
-        string tmp = await client.GetInfomationsOfStationByNameAsync(CityTextBox.Text, num);
+        string tmp = await client.GetInfomationsOfStationByNameAsync(CityTextBox.ToString(), num);
         if (tmp != "Not Found!")
         {
             result = tmp;
@@ -115,7 +117,7 @@ public partial class googleMap : System.Web.UI.Page
         string num = text.Split('-')[0].Replace(" ", "");
         if (num.Equals("0"))
             num = "555";
-        string tmp = await client.GetInfomationsOfStationByNameAsync(CityTextBox.Text, num);
+        string tmp = await client.GetInfomationsOfStationByNameAsync(CityTextBox.ToString(), num);
         if (tmp != "Not Found!")
         {
             result = tmp;
@@ -134,11 +136,11 @@ public partial class googleMap : System.Web.UI.Page
 
     protected async void start_TextChanged(object sender, EventArgs e)
     {
-        if (OriginOption.SelectedIndex == 1 && !CityTextBox.Text.Equals(""))
+        if (OriginOption.SelectedIndex == 1 && !CityTextBox.ToString().Equals(""))
         {
             ListBox1.Items.Clear();
             string res = "";
-            res = await client.GetAllStationsByCityAsync(CityTextBox.Text);
+            res = await client.GetAllStationsByCityAsync(CityTextBox.ToString());
             // responseFromServer = reader.ReadToEnd();
             //List<String> listStations = null;
             names = res.Split('\n').ToList();
@@ -163,11 +165,11 @@ public partial class googleMap : System.Web.UI.Page
 
     protected async void end_TextChanged(object sender, EventArgs e)
     {
-        if (DropDownList2.SelectedIndex == 1 && !CityTextBox.Text.Equals(""))
+        if (DropDownList2.SelectedIndex == 1 && !CityTextBox.ToString().Equals(""))
         {
             ListBox2.Items.Clear();
             string res = "";
-            res = await client.GetAllStationsByCityAsync(CityTextBox.Text);
+            res = await client.GetAllStationsByCityAsync(CityTextBox.ToString());
             names = res.Split('\n').ToList();
             names.Sort();
             for (int i = 0; i < names.Count; i++)
@@ -193,8 +195,16 @@ public partial class googleMap : System.Web.UI.Page
 
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
-        Server.Transfer("HomePage.aspx");
+        string url = "HomePage.aspx";
+        Response.Redirect(url, false);
+    }
+
+    protected void btnclick_click(object sender, EventArgs e)
+    {
+        string url = "HomePage.aspx";
+        Response.Redirect(url, false);
     }
 }

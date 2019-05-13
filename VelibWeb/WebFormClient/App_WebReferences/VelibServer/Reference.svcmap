@@ -23,6 +23,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="fd0041be-0bf7-44c2-bcf8-8edcf420e264" SourceId="1" SourceUrl="http://localhost:8733/VelibWeb/VelibService/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="16f6afae-352f-455b-856b-9f870edff34a" SourceId="1" SourceUrl="http://localhost:8733/VelibWeb/VelibService/?xsd=xsd2" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="00ddb69f-0ebc-4d4e-bbb6-d3210a90358d" SourceId="1" SourceUrl="http://localhost:8733/VelibWeb/VelibService/?xsd=xsd0" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="736172ed-1af7-4e31-84e0-7bed85cc4e9f" SourceId="1" SourceUrl="http://localhost:8733/VelibWeb/VelibService/?disco" />
     <MetadataFile FileName="VelibService.wsdl" MetadataType="Wsdl" ID="bc810fb7-29fc-4f4c-a360-8566b3c35e56" SourceId="1" SourceUrl="http://localhost:8733/VelibWeb/VelibService/?wsdl" />
