@@ -15,11 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelibConsoleClient", "Velib
 		{071D559A-68F1-4680-BEDC-27CAC7F979BE} = {071D559A-68F1-4680-BEDC-27CAC7F979BE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientGoogle", "WebClientGoogle\WebClientGoogle.csproj", "{161A6DDD-4F92-4124-AF55-91181B114529}"
-	ProjectSection(ProjectDependencies) = postProject
-		{071D559A-68F1-4680-BEDC-27CAC7F979BE} = {071D559A-68F1-4680-BEDC-27CAC7F979BE}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "Monitor\Monitor.csproj", "{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{071D559A-68F1-4680-BEDC-27CAC7F979BE} = {071D559A-68F1-4680-BEDC-27CAC7F979BE}
@@ -43,6 +38,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormClient", "WebFormCli
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "64176"
+		SlnRelativePath = "WebFormClient\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
@@ -64,10 +60,6 @@ Global
 		{74F01750-C791-4FE5-AF23-0D0A440E8F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74F01750-C791-4FE5-AF23-0D0A440E8F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F01750-C791-4FE5-AF23-0D0A440E8F34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{161A6DDD-4F92-4124-AF55-91181B114529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{161A6DDD-4F92-4124-AF55-91181B114529}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{161A6DDD-4F92-4124-AF55-91181B114529}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{161A6DDD-4F92-4124-AF55-91181B114529}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7962E7B-A4C7-4586-87F0-BCFC215F0FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU

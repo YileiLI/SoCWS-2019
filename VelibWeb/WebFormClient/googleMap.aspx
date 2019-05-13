@@ -33,7 +33,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <h1 aria-selected="undefined" style="font-family: Arial; text-align: center; font-size: 130px; font-weight: bold; color: #002537; background-color: #006699;">
+        <h1 aria-selected="undefined" style="font-family: Arial; text-align: center; font-size: 130px; font-weight: bold; color: #FFFFFF; background-color: #006699;">
             <asp:ImageButton ID="ImageButton1" runat="server" Height="56px" ImageUrl="~/Resource/left-arrow.png" OnClick="ImageButton1_Click" Width="65px" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Image ID="Image1" runat="server" Height="96px" ImageUrl="~/Resource/bicycle.png" Width="114px" />
@@ -42,9 +42,8 @@
             <div class="input-group mb-3">
                 <input type="text" runat="server" id="CityTextBox" class="form-control" placeholder="Entrer a city" aria-label="Entrer a city" aria-describedby="button-addon2"/>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary"
-                        type="button"
-                        runat="server"  onserverclick="btnclick_click">Find path</button>
+                    <asp:Button class="btn btn-outline-secondary" Text="Find Path"
+                        runat="server"  onclientclick="calculateAndDisplayRoute(); return false;"/>
                 </div>
             </div>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -87,6 +86,12 @@
                     center: { lat: 43.6155521, lng: 7.0695895 }
                 });
                 directionsDisplay.setMap(map);
+                if (document.getElementById('start').value != '') {
+                    var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+  });
+                }
 
             }
 

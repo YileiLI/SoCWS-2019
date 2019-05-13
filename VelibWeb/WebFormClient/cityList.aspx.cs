@@ -47,6 +47,9 @@ public partial class cityList : System.Web.UI.Page
             TextBox2.Text = res[2];
             TextBox4.Text = res[4];
             TextBox3.Text = res[3];
+            string ordi = res[6] + "," + res[7];
+            ordi = ordi.Replace(" ", "");
+            TextBox6.Text = ordi;
             if (res[5] == "true")
             {
                 TextBox5.Text = "Availble";

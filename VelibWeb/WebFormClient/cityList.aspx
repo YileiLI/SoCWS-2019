@@ -66,6 +66,12 @@
                                 <asp:TextBox ID="TextBox5" runat="server" Width="395px"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="row" style="font-family: Calibri; font-size: 20px; color: #3A3A3A">
+                            <div class="col-sm">Location:</div>
+                            <div class="col-sm">
+                                <asp:TextBox ID="TextBox6" runat="server" Width="395px"></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
